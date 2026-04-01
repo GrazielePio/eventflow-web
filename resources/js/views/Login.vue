@@ -115,7 +115,7 @@ export default {
           
           // Redirecionar para home
           setTimeout(() => {
-            // Dica: use o router do Vue se possível, mas o window.location funciona bem para resetar o estado
+            
             window.location.href = '/home'
           }, 1000)
         }

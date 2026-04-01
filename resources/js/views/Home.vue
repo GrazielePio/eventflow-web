@@ -140,7 +140,7 @@ export default {
       if (!caminho) return '';
       let arquivo = caminho.replace('public/', '');
       
-      // Prefixo necessário para o seu ambiente Herd
+      
       const base = '/storage/';
 
       if (arquivo.includes('/')) return `${base}${arquivo}`;
@@ -185,14 +185,14 @@ export default {
     async handleSubmit() {
       const fd = new FormData();
       
-      // Adicionamos os dados de texto, ignorando campos de arquivo que vêm do objeto evento
+      // Adiciona dados de texto, ignorando campos de arquivo que vêm do objeto evento
       Object.keys(this.formEvento).forEach(key => {
         if (key !== 'foto' && key !== 'manual_pdf' && this.formEvento[key] !== null) {
             fd.append(key, this.formEvento[key]);
         }
       });
 
-      // Adicionamos os arquivos novos SE foram selecionados
+      // Adiciona arquivos novos se foram selecionados
       if (this.fotoSelecionada) fd.append('foto', this.fotoSelecionada);
       if (this.pdfSelecionado) fd.append('manual_pdf', this.pdfSelecionado);
 

@@ -49,7 +49,7 @@ class EventoController extends Controller
             ], 422);
         }
 
-        // Criamos o array de dados removendo os campos de arquivo para tratar manualmente
+        // Cria o array de dados removendo os campos de arquivo para tratar manualmente
         $dados = $request->except(['foto', 'manual_pdf']);
         $dados['user_id'] = $request->user()->id;
         $dados['local'] = $request->logradouro . ', ' . $request->cidade;
@@ -86,7 +86,7 @@ class EventoController extends Controller
             return response()->json(['success' => false, 'message' => 'Acesso negado'], 403);
         }
 
-        // Na atualização via FormData (POST com _method PUT), o request->all() funciona bem
+        
         $dados = $request->except(['foto', 'manual_pdf']);
 
         if ($request->has('logradouro') || $request->has('cidade')) {
