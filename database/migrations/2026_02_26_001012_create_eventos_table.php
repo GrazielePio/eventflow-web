@@ -16,8 +16,15 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('titulo', 255);
             $table->date('data');
-            $table->string('local', 255);
+            $table->string('local', 255)->nullable(); // Adicione o nullable() aqui
             $table->text('descricao')->nullable();
+            
+            $table->string('cep', 9);
+            $table->string('logradouro');
+            $table->string('bairro');
+            $table->string('cidade');
+            $table->string('estado', 2);
+            $table->enum('categoria', ['Workshop', 'Palestra', 'Show', 'Outros']);
             $table->timestamps();
         });
     }

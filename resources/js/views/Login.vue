@@ -101,12 +101,21 @@ export default {
 
         // Login bem sucedido
         if (data.token) {
+          // 1. Salva o Token para autenticação nas próximas requisições
           localStorage.setItem('token', data.token)
+          
+          // 2. Salva o objeto completo (opcional, bom ter)
           localStorage.setItem('user', JSON.stringify(data.user))
+          
+          // 3. AQUI ESTÁ A CHAVE: Salva o nome especificamente para a Home usar
+          // Verifique se no seu Laravel o campo é 'name' ou 'nome'
+          localStorage.setItem('userName', data.user.name) 
+          
           this.messageSuccess = 'Login realizado com sucesso!'
           
           // Redirecionar para home
           setTimeout(() => {
+            // Dica: use o router do Vue se possível, mas o window.location funciona bem para resetar o estado
             window.location.href = '/home'
           }, 1000)
         }
